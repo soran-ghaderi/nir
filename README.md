@@ -1,3 +1,3 @@
-# Potential Based Diffusion Motion Planning
+# Neural Integration of Iterative Reasoning (NIR) in LLMs for Code Generation
 
-Webpage: https://energy-based-model.github.io/potential-motion-plan/
+Webpage: https://soran-ghaderi.github.io/nir
