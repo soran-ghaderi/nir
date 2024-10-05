@@ -6,7 +6,7 @@
         content="Learning Iterative Reasoning through Energy Diffusion">
   <meta name="keywords" content="Machine Learning, ICML, Diffusion Model, Iterative Reasoning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Learning Iterative Reasoning through Energy Diffusion</title>
+  <title>Neural Integration of Iterative Reasoning (NIR) in LLMs for Code Generation</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3593LNYVK9"></script>
@@ -85,32 +85,33 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Learning Iterative Reasoning through Energy Diffusion</h1>
+          <h1 class="title is-1 publication-title">Neural Integration of Iterative Reasoning (NIR) in LLMs for Code Generation</h1>
             <!-- <h2 class="title is-size-2">ICCV 2023</h2> -->
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://yilundu.github.io/">Yilun Du</a><sup>*</sup>,
+              <a href="https://soran-ghaderi.github.io/">Soran Ghaderi</a>
+<!-- 		    <sup>*</sup> -->
             </span>
-            <span class="author-block">
+<!--             <span class="author-block">
               <a href="https://jiayuanm.com/">Jiayuan Mao</a><sup>*</sup>,
             </span>
             <span class="author-block">
               <a href="http://web.mit.edu/cocosci/josh.html">Joshua B. Tenenbaum</a>
-            </span>
+            </span> -->
 
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">MIT CSAIL</span>
-            <p>(* indicates equal contribution)</p>
-            <br><b>ICML 2024</b>
+            <span class="author-block">University of Essex</span>
+<!--             <p>(* indicates equal contribution)</p> -->
+            <br><b>September 2024</b>
           </div>
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
                 <!-- TODO: -->
-                <a href="ired.pdf"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -120,7 +121,7 @@
               </span>
               <span class="link-block">
                 <!-- TODO: -->
-                <a href="https://arxiv.org/abs/2406.11179"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -131,7 +132,7 @@
               <!-- Code Link. -->
               <span class="link-block">
                 <!-- TODO: -->
-                <a href="https://github.com/yilundu/ired_code_release"
+                <a href="https://github.com/soran-ghaderi/moc"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -156,8 +157,24 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-          We introduce iterative reasoning through energy diffusion (IRED), a novel framework for learning to reason for a variety of tasks by formulating reasoning and decision-making problems with energy-based optimization. IRED learns energy functions to represent the constraints between input conditions and desired outputs. After training, IRED adapts the number of optimization steps during inference based
-on problem difficulty, enabling it to solve problems outside its training distribution — such as more complex Sudoku puzzles, matrix completion with large value magnitudes, and path finding in larger graphs. Key to our method’s success is two novel techniques: learning a sequence of annealed energy landscapes for easier inference and a combination of score function and energy landscape supervision for faster and more stable training. Our experiments show that IRED outperforms existing methods in continuous-space reasoning, discrete-space reasoning, and planning tasks, particularly in more challenging scenarios.
+          Despite advances in large language models (LLMs) for code generation, they still
+struggle in effectively utilizing contextual information throughout the generation process.
+To tackle this challenge, we introduce the Neural Integration of Iterative Reasoning (NIR)
+framework, which offers a new method for incorporating Context Representation Vectors
+(CRVs) at multiple levels within LLMs. NIR boosts the ability of these models to generate
+code without needing fine-tuning, which allowing it to be used across various LLM architec-
+tures. We assess NIR by testing it with LLaMA 3.1 on the MBPP dataset, focusing on early,
+mid, and deep integration stages. Our experiments show that the depth of CRV integration
+has a notable impact on several facets of code generation, including response rates, syntactic
+correctness, and overall code structure. Deeper integration generally improves syntactic
+accuracy and code conciseness, while mid-layer integration shows optimal performance in
+semantic tasks. We report detailed evaluation metrics that assess code quality, complexity,
+and structure. Our findings indicate possible trade-offs among various code quality measures
+and emphasize the potential of adaptive integration strategies. While NIR demonstrates
+promising results, we also identify limitations such as dataset specificity and output inconsis-
+tencies. This study contributes to understanding contextual information processing in LLMs
+and might be useful for future developments in codeLLMs. We conclude by outlining future
+research directions, including multi-layer integration and dynamic adaptation strategies.
           </p>
         </div>
       </div>
@@ -166,6 +183,38 @@ on problem difficulty, enabling it to solve problems outside its training distri
 </section>
 
 
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">More Updates Soon</h2>
+<!-- 
+          <p>
+          Our approach can solve a set of continuous algorithmic tasks such as matrix addition, matrix inverse and matrix completion. Below, we illustrate the error map of the predictions of our approach on the matrix inverse task as we iteratively optimize each energy landscape.
+          </p> -->
+
+<!--           <br/>
+        <div class="centered-caption"  width="50%">
+          <figure>
+            <img width="100%" src="materials/energy_minima.png" alt="" style="max-width:720px">
+            <br/>
+            <div class="left-caption">
+              <b>Error Map Across Landscape Optimization.</b>
+              Illustration of prediction error on the matrix inverse task as predictions are optimized. Optimization results at later energy landscapes have lower prediction error.
+            </div>
+          </figure>
+        </div> -->
+<!--       </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
@@ -183,14 +232,14 @@ on problem difficulty, enabling it to solve problems outside its training distri
     </div>
   </div>
 </section>
+ -->
 
-
-
+<!-- 
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container is-max-desktop"> -->
 
     <!-- Animation. -->
-    <div class="columns is-centered">
+<!--     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-4">Continuous Algorithmic Reasoning</h2>
 
@@ -213,14 +262,14 @@ on problem difficulty, enabling it to solve problems outside its training distri
       </div>
     </div>
   </div>
-</section>
-
+</section> -->
+<!-- 
 
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container is-max-desktop"> -->
 
     <!-- Animation. -->
-    <div class="columns is-centered">
+<!--     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-4">Discrete-Space Reasoning</h2>
           <p>
@@ -260,13 +309,13 @@ on problem difficulty, enabling it to solve problems outside its training distri
     </div>
   </div>
 </section>
+ -->
 
-
-<section class="section">
-  <div class="container is-max-desktop">
+<!-- <section class="section">
+  <div class="container is-max-desktop"> -->
 
     <!-- Animation. -->
-    <div class="columns is-centered">
+<!--     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-4">Planning</h2>
 
@@ -291,9 +340,9 @@ on problem difficulty, enabling it to solve problems outside its training distri
     </div>
   </div>
 </section>
+ -->
 
-
-<section class="section">
+<!-- <section class="section">
         <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
@@ -334,11 +383,11 @@ on problem difficulty, enabling it to solve problems outside its training distri
 
         </div>
 </section>
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content column is-full-width ">
+ -->
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content column is-full-width "> -->
     <!-- TODO: -->
-    <h2 class="title is-4">BibTeX</h2>
+<!--     <h2 class="title is-4">BibTeX</h2>
     <pre><code>@InProceedings{Du_2024_ICML,
     author    = {Du, Yilun and Mao, Jiayuan and Tenenbaum, Joshua B.},
     title     = {Learning Iterative Reasoning through Energy Diffusion},
@@ -347,7 +396,7 @@ on problem difficulty, enabling it to solve problems outside its training distri
 }
 </code></pre>
   </div>
-</section>
+</section> -->
 
 <footer class="footer">
   <div class="container">
