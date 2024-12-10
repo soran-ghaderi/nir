@@ -7,6 +7,7 @@
   <meta name="keywords" content="Machine Learning, ICML, Diffusion Model, Iterative Reasoning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neural Integration of Iterative Reasoning (NIR) in LLMs for Code Generation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3593LNYVK9"></script>
@@ -38,6 +39,31 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
   <script src="load-mathjax.js" async></script>
+  <style>
+    /* Table styles */
+    .table-dark th {
+      background-color: #f8f9fa;
+      color: #ffffff;
+    }
+    table {
+      font-size: 14px;
+      border-radius: 5px;
+    }
+    table tbody tr:hover {
+      background-color: #f8f9fa;
+    }
+
+    /* Code snippet styles */
+    pre {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border: 1px solid #dee2e6;
+      border-radius: 15px;
+      font-family: monospace;
+      overflow-x: auto; /* Enables horizontal scrolling for long lines */
+    }
+  </style>
+
 </head>
 <body>
 
@@ -111,28 +137,28 @@
               <!-- PDF Link. -->
               <span class="link-block">
                 <!-- TODO: -->
-                <a href=""
+                <a href="nir.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>Paper</span>
+                  <span>Dissertation</span>
                 </a>
               </span>
-              <span class="link-block">
-                <!-- TODO: -->
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
+<!--              <span class="link-block">-->
+<!--                &lt;!&ndash; TODO: &ndash;&gt;-->
+<!--                <a href=""-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="ai ai-arxiv"></i>-->
+<!--                  </span>-->
+<!--                  <span>arXiv</span>-->
+<!--                </a>-->
+<!--              </span>-->
               <!-- Code Link. -->
               <span class="link-block">
                 <!-- TODO: -->
-                <a href="https://github.com/soran-ghaderi/moc"
+                <a href="https://github.com/soran-ghaderi/nir_code_release"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -158,21 +184,21 @@
         <div class="content has-text-justified">
           <p>
           Despite advances in large language models (LLMs) for code generation, they still
-struggle in effectively utilizing contextual information throughout the generation process.
-To tackle this challenge, we introduce the Neural Integration of Iterative Reasoning (NIR)
-framework, which offers a new method for incorporating Context Representation Vectors
-(CRVs) at multiple levels within LLMs. NIR boosts the ability of these models to generate
-code without needing fine-tuning, allowing it to be used across various LLM architectures. We assess NIR by testing it with LLaMA 3.1 on the MBPP dataset, focusing on early,
-mid, and deep integration stages. Our experiments show that the depth of CRV integration
-has a notable impact on several facets of code generation, including response rates, syntactic
-correctness, and overall code structure. Deeper integration generally improves syntactic
-accuracy and code conciseness, while mid-layer integration shows optimal performance in
-semantic tasks. We report detailed evaluation metrics that assess code quality, complexity,
-and structure. Our findings indicate possible trade-offs among various code quality measures
-and emphasize the potential of adaptive integration strategies. While NIR demonstrates
-promising results, we also identify limitations such as dataset specificity and output inconsistencies. This study contributes to understanding contextual information processing in LLMs
-and might be useful for future developments in codeLLMs. We conclude by outlining future
-research directions, including multi-layer integration and dynamic adaptation strategies.
+          struggle in effectively utilizing contextual information throughout the generation process.
+          To tackle this challenge, we introduce the Neural Integration of Iterative Reasoning (NIR)
+          framework, which offers a new method for incorporating Context Representation Vectors
+          (CRVs) at multiple levels within LLMs. NIR boosts the ability of these models to generate
+          code without needing fine-tuning, allowing it to be used across various LLM architectures. We assess NIR by testing it with LLaMA 3.1 on the MBPP dataset, focusing on early,
+          mid, and deep integration stages. Our experiments show that the depth of CRV integration
+          has a notable impact on several facets of code generation, including response rates, syntactic
+          correctness, and overall code structure. Deeper integration generally improves syntactic
+          accuracy and code conciseness, while mid-layer integration shows optimal performance in
+          semantic tasks. We report detailed evaluation metrics that assess code quality, complexity,
+          and structure. Our findings indicate possible trade-offs among various code quality measures
+          and emphasize the potential of adaptive integration strategies. While NIR demonstrates
+          promising results, we also identify limitations such as dataset specificity and output inconsistencies. This study contributes to understanding contextual information processing in LLMs
+          and might be useful for future developments in codeLLMs. We conclude by outlining future
+          research directions, including multi-layer integration and dynamic adaptation strategies.
           </p>
         </div>
       </div>
@@ -183,34 +209,365 @@ research directions, including multi-layer integration and dynamic adaptation st
 
 
 
-<!-- <section class="section">
-  <div class="container is-max-desktop"> -->
+<section class="section">
+  <div class="container is-max-desktop">
 
     <!-- Animation. -->
-<!--     <div class="columns is-centered">
+     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-4">More Updates Soon</h2> -->
-<!-- 
-          <p>
-          Our approach can solve a set of continuous algorithmic tasks such as matrix addition, matrix inverse and matrix completion. Below, we illustrate the error map of the predictions of our approach on the matrix inverse task as we iteratively optimize each energy landscape.
-          </p> -->
+        <h2 class="title is-4">Architecture</h2>
 
-<!--           <br/>
-        <div class="centered-caption"  width="50%">
-          <figure>
-            <img width="100%" src="materials/energy_minima.png" alt="" style="max-width:720px">
-            <br/>
-            <div class="left-caption">
-              <b>Error Map Across Landscape Optimization.</b>
-              Illustration of prediction error on the matrix inverse task as predictions are optimized. Optimization results at later energy landscapes have lower prediction error.
-            </div>
+        <div style="display: flex; justify-content: center; text-align: center;">
+          <figure style="margin: 0 10px;">
+            <img src="materials/thinking.png" alt="Thinking Stage Process" style="max-width: 720px; width: auto; height: auto; max-height: 500px;">
+            <figcaption>An illustration of the Thinking Stage process.</figcaption>
           </figure>
-        </div> -->
-<!--       </div> -->
-<!--       </div>
+          <figure style="margin: 0 10px;">
+            <img src="materials/nir.png" alt="Proposed Architecture" style="max-width: 720px; width: auto; height: auto; max-height: 500px;">
+            <figcaption>An illustration of the proposed architecture. The red circles indicate concatenated elements and the green circles represent the original elements of the hidden states.</figcaption>
+          </figure>
+        </div>
+        <br/>
+
+<!--        <section class="extended-sequence-rope">-->
+<!--          <h3 class="title is-5">Extended Sequence RoPE Recalculation</h3>-->
+
+<!--          <div class="recalculation-matrix">-->
+<!--            <h2>Recalculation Matrix</h2>-->
+<!--            <p>For an extended sequence of length $n+m$, where $n$ is the original sequence length and $m$ is the-->
+<!--              length of the new input, the recalculation matrix is:</p>-->
+
+<!--            <div class="math-equation">-->
+<!--              $$R'_{\Theta,i,d} = \begin{pmatrix} \cos(i\theta_d) & -\sin(i\theta_d) \\ \sin(i\theta_d) & \cos(i\theta_d) \end{pmatrix}$$-->
+<!--            </div>-->
+
+<!--            <p>Where $i = 0, \ldots, n+m$</p>-->
+<!--          </div>-->
+<!--          <br>-->
+<!--          <div class="query-key-transformation">-->
+<!--            <h3 class="title is-5">Query and Key Transformation</h3>-->
+<!--            <p>For new sequence positions:</p>-->
+
+<!--            <div class="math-equation">-->
+<!--              $$\begin{align}-->
+<!--              q'_i &= (q_{i,1}, \ldots, q_{i,D}) \cdot R'_{\Theta,i} \\-->
+<!--              k'_i &= (k_{i,1}, \ldots, k_{i,D}) \cdot R'_{\Theta,i}-->
+<!--              \end{align}$$-->
+<!--            </div>-->
+
+<!--            <p><em>Note: $i = 0, \ldots, n+m$</em></p>-->
+<!--          </div>-->
+<!--        </section>-->
+
+        <section class="metrics-analysis">
+          <div class="container my-5">
+            <h1 class="title is-4 mb-4">Tables and Listings</h1>
+
+            <section class="mb-5">
+              <h2 class="title is-6 text-center mb-4">Response Rates Across Different Layers</h2>
+              <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                <tr>
+                  <th>Metric</th>
+                  <th>Layer 1</th>
+                  <th>Layer 10</th>
+                  <th>Layer 23</th>
+                  <th>Original</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Response Rate (Higher is better)</td>
+                  <td>0.5799</td>
+                  <td>0.9941</td>
+                  <td>0.9941</td>
+                  <td>0.9941</td>
+                </tr>
+                <tr>
+                  <td>Sample Size</td>
+                  <td>169</td>
+                  <td>169</td>
+                  <td>169</td>
+                  <td>169</td>
+                </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="mb-5">
+              <h2 class="title is-6 text-center mb-4">Code Quality Metrics Across Different Layers</h2>
+              <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                <tr>
+                  <th>Metric</th>
+                  <th>Layer 1</th>
+                  <th>Layer 10</th>
+                  <th>Layer 23</th>
+                  <th>Original</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Syntactic Correctness (Higher is better)</td>
+                  <td>0.1915</td>
+                  <td>0.8690</td>
+                  <td>0.9762</td>
+                  <td>0.9762</td>
+                </tr>
+                <tr>
+                  <td>Function Name Consistency (Higher is better)</td>
+                  <td>0.9574</td>
+                  <td>1.0000</td>
+                  <td>0.9821</td>
+                  <td>0.9940</td>
+                </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="mb-5">
+              <h2 class="title is-6 text-center mb-4">Code Complexity Metrics Across Different Layers</h2>
+              <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                <tr>
+                  <th>Metric</th>
+                  <th>Layer 1</th>
+                  <th>Layer 10</th>
+                  <th>Layer 23</th>
+                  <th>Original</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Cyclomatic Complexity (Lower is better)</td>
+                  <td>0.4468</td>
+                  <td>2.0714</td>
+                  <td>2.5952</td>
+                  <td>2.3571</td>
+                </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="mb-5">
+              <h2 class="title is-6 text-center mb-4">Code Structure Metrics Across Different Layers</h2>
+              <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                <tr>
+                  <th>Metric</th>
+                  <th>Layer 1</th>
+                  <th>Layer 10</th>
+                  <th>Layer 23</th>
+                  <th>Original</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Lines of Code (Lower is better)</td>
+                  <td>8.2234</td>
+                  <td>11.5893</td>
+                  <td>6.0952</td>
+                  <td>15.7262</td>
+                </tr>
+                <tr>
+                  <td>No. Characters (Lower is better)</td>
+                  <td>217.1596</td>
+                  <td>335.9464</td>
+                  <td>198.0119</td>
+                  <td>535.0417</td>
+                </tr>
+                <tr>
+                  <td>Comment Lines (A balance is ideal, too high might indicate over-commenting)</td>
+                  <td>0.0745</td>
+                  <td>1.2262</td>
+                  <td>0.3750</td>
+                  <td>3.0714</td>
+                </tr>
+                <tr>
+                  <td>Comment Ratio (A balance is ideal, too high might indicate over-commenting)</td>
+                  <td>0.0140</td>
+                  <td>0.0852</td>
+                  <td>0.0256</td>
+                  <td>0.1295</td>
+                </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="mb-5">
+              <h2 class="title is-6 text-center mb-4">Basic Halstead Metrics Across Different Layers</h2>
+              <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                <tr>
+                  <th>Metric</th>
+                  <th>Layer 1</th>
+                  <th>Layer 10</th>
+                  <th>Layer 23</th>
+                  <th>Original</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>h1 (Distinct Operators) (Lower is better)</td>
+                  <td>2.0319</td>
+                  <td>3.0357</td>
+                  <td>2.8036</td>
+                  <td>3.7143</td>
+                </tr>
+                <tr>
+                  <td>h2 (Distinct Operands) (Lower is better)</td>
+                  <td>11.3511</td>
+                  <td>20.6726</td>
+                  <td>17.1250</td>
+                  <td>32.7917</td>
+                </tr>
+                <tr>
+                  <td>N1 (Total Operators) (Lower is better)</td>
+                  <td>4.9894</td>
+                  <td>6.5774</td>
+                  <td>6.2500</td>
+                  <td>7.6786</td>
+                </tr>
+                <tr>
+                  <td>N2 (Total Operands) (Lower is better)</td>
+                  <td>30.2128</td>
+                  <td>49.1786</td>
+                  <td>42.2321</td>
+                  <td>83.3274</td>
+                </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="mb-5">
+              <h2 class="title is-6 text-center mb-4">Derived Halstead Metrics Across Different Layers</h2>
+              <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                <tr>
+                  <th>Metric</th>
+                  <th>Layer 1</th>
+                  <th>Layer 10</th>
+                  <th>Layer 23</th>
+                  <th>Original</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Vocabulary (Lower is better)</td>
+                  <td>13.3511</td>
+                  <td>23.5655</td>
+                  <td>19.9286</td>
+                  <td>36.5000</td>
+                </tr>
+                <tr>
+                  <td>Length (Lower is better)</td>
+                  <td>43.7660</td>
+                  <td>61.7381</td>
+                  <td>54.9464</td>
+                  <td>97.1905</td>
+                </tr>
+                <tr>
+                  <td>Volume (Lower is better)</td>
+                  <td>170.4025</td>
+                  <td>291.6987</td>
+                  <td>252.0961</td>
+                  <td>511.6619</td>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="mb-5">
+              <h2 class="title is-6 text-center mb-4">Complexity Halstead Metrics Across Different Layers</h2>
+              <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                <tr>
+                  <th>Metric</th>
+                  <th>Layer 1</th>
+                  <th>Layer 10</th>
+                  <th>Layer 23</th>
+                  <th>Original</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Difficulty (Lower is better)</td>
+                  <td>2.6944</td>
+                  <td>3.8036</td>
+                  <td>3.7718</td>
+                  <td>4.8205</td>
+                </tr>
+                <tr>
+                  <td>Effort (Lower is better)</td>
+                  <td>732.6550</td>
+                  <td>1431.2053</td>
+                  <td>1712.3707</td>
+                  <td>2925.4783</td>
+                </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="mb-5">
+              <h2 class="title is-5 mb-4">Qualitative Analysis</h2>
+              <h3 class="title is-6 text-center mb-4">Code Structure and Readability</h3>
+              <p>Examining the code generated after integrating at Layer 10 of our NIR framework for the task of checking distinct elements in a tuple, we observe:</p>
+              <br>
+              <pre class="bg-light p-3 border rounded">
+<code>def check_distinct(tup):
+    return len(tup) == len(set(tup))
+</code>
+            </pre>
+              <br>
+              <p>This solution demonstrates a concise and elegant approach to the problem. The use of Python's built-in <code>set</code> data structure showcases an understanding of efficient data manipulation. The one-line implementation is both readable and efficient, directly comparing the length of the original tuple with the length of its set representation.</p>
+              <br>
+              <p>Comparing this to the original model's output:</p>
+              <br>
+              <pre class="bg-light p-3 border rounded">
+<code>def check_distinct(numbers):
+    """ Checks if all numbers in the tuple are distinct.
+    Args:
+    numbers (tuple): A tuple of integers.
+    Returns:
+    bool: True if all numbers are distinct, False otherwise.
+    """
+    return len(numbers) == len(set(numbers))
+</code>
+            </pre>
+              <br>
+              <p>The original model's solution, while functionally similar, includes comprehensive documentation. This trade-off between conciseness and readability depends on the intended audience and the project's documentation standards.</p>
+            </section>
+          </div>
+            </section>
+
+        <section class="mb-5">
+          <h2 class="title is-5 mb-4">BibTeX</h2>
+          <pre class="bg-light p-3 border rounded">
+<code>@MastersThesis{soran_2024_essex,
+    author    = {Ghaderi, Soran},
+    title     = {Neural Integration of Iterative Reasoning (NIR) in LLMs for Code Generation},
+    school    = {University of Essex},
+    year      = {2024},
+    type      = "Master's Thesis",
+}</code>
+    </pre>
+        </section>
+
+        <!--           <br/>-->
+<!--        <div class="centered-caption"  width="50%">-->
+<!--          <figure>-->
+
+<!--            <br/>-->
+<!--            <div class="left-caption">-->
+<!--              <b>Error Map Across Landscape Optimization.</b>-->
+<!--              Illustration of prediction error on the matrix inverse task as predictions are optimized. Optimization results at later energy landscapes have lower prediction error.-->
+<!--            </div>-->
+<!--          </figure>-->
+<!--        </div>-->
+       </div>
+       </div>
     </div>
   </div>
-</section> -->
+</section>
 
 <!-- 
 <section class="hero teaser">
@@ -421,6 +778,7 @@ research directions, including multi-layer integration and dynamic adaptation st
     </div>
   </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
